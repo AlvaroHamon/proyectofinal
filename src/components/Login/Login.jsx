@@ -3,7 +3,7 @@ import "./login.css";
 const Login = () => {
   return (
     <main className="contenedorlogin">
-      <div className="contenedorformulario">
+      <form className="contenedorformulario">
         <div className="input-group mb-3">
           <span className="input-group-text" id="basic-addon1">
             Usuario
@@ -28,10 +28,10 @@ const Login = () => {
             aria-describedby="basic-addon1"
           />
         </div>
-        <button type="button" className="btn btn-outline-secondary">
-          Primary
+        <button type="submit" className="btn btn-outline-secondary">
+          Inicio Sesión
         </button>
-      </div>
+      </form>
     </main>
   );
 };
