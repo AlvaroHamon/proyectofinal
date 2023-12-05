@@ -9,7 +9,7 @@ const DetalleTarjeta = () => {
   const ts = 2;
   const key = "f1213e3b7cd76bc1318e3e426304997c";
   const hash = "a9274bd14ea97ddccee3596b44860c5b";
-  const url = `http://gateway.marvel.com/v1/public/comics/${id}?ts=${ts}&apikey=${key}&hash=${hash}`;
+  const url = `https://gateway.marvel.com/v1/public/comics/${id}?ts=${ts}&apikey=${key}&hash=${hash}`;
 
   useEffect(() => {
     const solicitud = async () => {
