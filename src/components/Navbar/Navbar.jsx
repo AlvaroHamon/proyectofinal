@@ -1,17 +1,15 @@
+import Filtro from "./Filtro";
 import "./navbar.css";
 import { NavLink } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const { handleLogout, filtro, setFiltro } = props;
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <NavLink
-            className="navbar-brand"
-            activeclassname="activo"
-            to="/tarjetas"
-          >
-            Inicio
+          <NavLink className="navbar-brand" activeclassname="activo" to="/">
+            Marvel
           </NavLink>
           <button
             className="navbar-toggler"
@@ -26,26 +24,21 @@ const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  Comics
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Series
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Personajes
-                </a>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" activeclassname="activo" to="/">
-                  Iniciar Sesión
-                </NavLink>
-              </li>
+              {localStorage.getItem("login") && (
+                <>
+                  <Filtro filtro={filtro} setFiltro={setFiltro} />
+                  <li className="nav-item">
+                    <a
+                      style={{ cursor: "pointer" }}
+                      className="nav-link"
+                      activeclassname="activo"
+                      onClick={() => handleLogout(false)}
+                    >
+                      Cerrar Sesión
+                    </a>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>

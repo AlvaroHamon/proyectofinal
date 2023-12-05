@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Tarjetas = ({ ruta, titulo, descripcion, id }) => {
+const Tarjetas = ({ ruta, titulo, descripcion, id, filtro }) => {
   return (
     <>
       <div className="card" style={{ width: "18rem" }}>
@@ -8,7 +8,7 @@ const Tarjetas = ({ ruta, titulo, descripcion, id }) => {
         <div className="card-body">
           <h5 className="card-title">{titulo}</h5>
           <p className="card-text">{descripcion}</p>
-          <Link className="btn btn-primary" to={`/tarjetas/${id}`}>
+          <Link className="btn btn-primary" to={`/detalle/${filtro}/${id}`}>
             Ver Mas
           </Link>
         </div>

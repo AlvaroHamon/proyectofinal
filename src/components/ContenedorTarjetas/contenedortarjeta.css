@@ -1,7 +1,8 @@
 .contenedor {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
-  gap: 5px;
+  justify-items: center;
+  gap: 1rem;
   flex: 1;
 }
 

@@ -8,3 +8,10 @@
 .btn {
   width: 100%;
 }
+
+.bienvenida {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1rem;
+}
