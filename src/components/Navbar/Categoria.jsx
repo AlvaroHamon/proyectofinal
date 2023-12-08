@@ -1,17 +1,23 @@
 import "./filtro.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
-const Filtro = ({ setFiltro }) => {
+const Categoria = ({ setCategoria }) => {
+  const navigate = useNavigate();
+
+  const handleCategoria = (valor) => {
+    setCategoria(valor);
+    navigate(`/contenedor/${valor}`);
+  };
   return (
     <div className="contenedorfiltro">
       <li className="nav-item">
         <NavLink
           className="nav-link active"
           aria-current="page"
-          onClick={() => {
-            setFiltro("comics");
-          }}
           to={`/contenedor/comics`}
+          onClick={() => {
+            handleCategoria("comics");
+          }}
         >
           Comics
         </NavLink>
@@ -19,10 +25,10 @@ const Filtro = ({ setFiltro }) => {
       <li className="nav-item">
         <NavLink
           className="nav-link active"
-          onClick={() => {
-            setFiltro("series");
-          }}
           to={`/contenedor/series`}
+          onClick={() => {
+            handleCategoria("series");
+          }}
         >
           Series
         </NavLink>
@@ -30,10 +36,10 @@ const Filtro = ({ setFiltro }) => {
       <li className="nav-item">
         <NavLink
           className="nav-link active"
+          to={`/contenedor/characters`}
           onClick={() => {
-            setFiltro("personajes");
+            handleCategoria("characters");
           }}
-          to={`/contenedor/personajes`}
         >
           Personajes
         </NavLink>
@@ -42,4 +48,4 @@ const Filtro = ({ setFiltro }) => {
   );
 };
 
-export default Filtro;
+export default Categoria;

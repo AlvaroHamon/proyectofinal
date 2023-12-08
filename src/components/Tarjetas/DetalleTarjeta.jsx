@@ -5,11 +5,11 @@ import axios from "axios";
 
 const DetalleTarjeta = () => {
   const [detalle, setDetalle] = useState([]);
-  const { id } = useParams();
+  const { categoria, id } = useParams();
   const ts = 2;
   const key = "f1213e3b7cd76bc1318e3e426304997c";
   const hash = "a9274bd14ea97ddccee3596b44860c5b";
-  const url = `https://gateway.marvel.com/v1/public/comics/${id}?ts=${ts}&apikey=${key}&hash=${hash}`;
+  const url = `https://gateway.marvel.com/v1/public/${categoria}/${id}?ts=${ts}&apikey=${key}&hash=${hash}`;
 
   useEffect(() => {
     const solicitud = async () => {
@@ -38,18 +38,45 @@ const DetalleTarjeta = () => {
 
   return (
     <main className="contenedordetalle">
-      <div className="contenedorimg">
-        <img
-          src={`${detalle.thumbnail.path}/portrait_uncanny.${detalle.thumbnail.extension}`}
-          alt=""
-          className="img"
-        />
-      </div>
-      <div className="contenedortitulo">
-        <h2>{detalle.title}</h2>
-        <h3>Fecha de publicación:</h3>
-        <p>{detalle.dates[0].date}</p>
-      </div>
+      {categoria === "characters" ? (
+        <>
+          <div className="contenedorimg">
+            <img
+              src={`${detalle.thumbnail.path}/portrait_uncanny.${detalle.thumbnail.extension}`}
+              alt=""
+              className="img"
+            />
+          </div>
+          <div className="contenedortitulo">
+            <h2>{detalle.name}</h2>
+            <h3>Description</h3>
+            {detalle.description === null || detalle.description === "" ? (
+              <p>Not available</p>
+            ) : (
+              <p className="card-text">{detalle.description}</p>
+            )}
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="contenedorimg">
+            <img
+              src={`${detalle.thumbnail.path}/portrait_uncanny.${detalle.thumbnail.extension}`}
+              alt=""
+              className="img"
+            />
+          </div>
+          <div className="contenedortitulo">
+            <h2>{detalle.title}</h2>
+            <h3>Description:</h3>
+            {detalle.description === null || detalle.description === "" ? (
+              <p>Not available</p>
+            ) : (
+              <p className="card-text">{detalle.description}</p>
+            )}
+          </div>
+        </>
+      )}
     </main>
   );
 };

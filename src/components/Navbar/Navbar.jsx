@@ -1,9 +1,9 @@
-import Filtro from "./Filtro";
+import Categoria from "./Categoria";
 import "./navbar.css";
 import { NavLink } from "react-router-dom";
 
 const Navbar = (props) => {
-  const { handleLogout, filtro, setFiltro } = props;
+  const { handleLogout, categoria, setCategoria } = props;
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -26,7 +26,12 @@ const Navbar = (props) => {
             <ul className="navbar-nav">
               {localStorage.getItem("login") && (
                 <>
-                  <Filtro filtro={filtro} setFiltro={setFiltro} />
+                  <div>
+                    <Categoria
+                      categoria={categoria}
+                      setCategoria={setCategoria}
+                    />
+                  </div>
                   <li className="nav-item">
                     <a
                       style={{ cursor: "pointer" }}
